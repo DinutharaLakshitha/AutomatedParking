@@ -61,15 +61,15 @@ void loop() {
 
   //tfront_sen_one_distance = front_sen_one();
   //front_sen_two_distance = front_sen_two();
- // back_sen_one_distance  = back_sen_one();
-//  back_sen_two_distance = back_sen_two();
+  // back_sen_one_distance  = back_sen_one();
+  //  back_sen_two_distance = back_sen_two();
 
-  if (front_sen_one() <= 5) {
+  if (front_sen_one() <= 5 && front_sen_one() > 0) {
     if (vehicalCount > 0) {
       openGate1();
       for ( timer1 = 0 ; timer1 < 10 ; timer1++) {
         delay(2000);
-        if (front_sen_two() <= 5) {
+        if (front_sen_two() <= 5 && front_sen_two() > 0) {
           closeGate1();
           vehicalCount--;
           timer1 = 20;
@@ -83,23 +83,23 @@ void loop() {
       // Disply unavailability
     }
   }
-//  else {
-//    if (back_sen_one_distance <= 5) {
-//      openGate2();
-//      for ( timer2 = 0 ; timer2 < 10 ; timer2++) {
-//        delay(2000);
-//        if (back_sen_two_distance <= 5) {
-//          closeGate2();
-//          vehicalCount++;
-//          timer2 = 20;
-//        }
-//      }
-//      if (timer2 != 20) {
-//        closeGate2();
-//      }
-//    }
-//
-//  }
+  else {
+    if (back_sen_one() <= 5 && back_sen_one() > 0) {
+      openGate2();
+      for ( timer2 = 0 ; timer2 < 10 ; timer2++) {
+        delay(2000);
+        if (back_sen_two() <= 5 && back_sen_two() > 0) {
+          closeGate2();
+          vehicalCount++;
+          timer2 = 20;
+        }
+      }
+      if (timer2 != 21) {
+        closeGate2();
+      }
+    }
+
+  }
 
 
 }
