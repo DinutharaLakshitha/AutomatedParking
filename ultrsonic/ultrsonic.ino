@@ -11,7 +11,7 @@ const int front_sen_one_echoPin = 3;
 //const int front_sen_two_trigPin = 4;
 const int front_sen_two_echoPin = 4;
 
-//const int back_sen_one_trigPin = 6;
+//const int back_sen_one_trigPin = 7;
 const int back_sen_one_echoPin = 5;
 
 //const int back_sen_two_trigPin = 8;
@@ -80,7 +80,7 @@ void loop() {
       }
     }
     else {
-      // Disply unavailability
+      // Disply unavailability mmmmmm
     }
   }
   else {
