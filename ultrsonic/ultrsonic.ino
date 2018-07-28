@@ -59,10 +59,14 @@ void loop() {
   int timer1;
   int timer2;
 
-  //tfront_sen_one_distance = front_sen_one();
-  //front_sen_two_distance = front_sen_two();
-  // back_sen_one_distance  = back_sen_one();
-  //  back_sen_two_distance = back_sen_two();
+//  front_sen_one_distance = front_sen_one();
+//  delay(100);
+//  front_sen_two_distance = front_sen_two();
+//  delay(500);
+//   back_sen_one_distance  = back_sen_one();
+//   delay(500);
+//    back_sen_two_distance = back_sen_two();
+//    delay(500);
 
   if (front_sen_one() <= 5 && front_sen_one() > 0) {
     if (vehicalCount > 0) {
@@ -84,6 +88,7 @@ void loop() {
     }
   }
   else {
+    delay(100);
     if (back_sen_one() <= 5 && back_sen_one() > 0) {
       openGate2();
       for ( timer2 = 0 ; timer2 < 10 ; timer2++) {
