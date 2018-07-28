@@ -75,7 +75,7 @@ void loop() {
           timer1 = 20;
         }
       }
-      if (timer1 != 20) {
+      if (timer1 != 21) {
         closeGate1();
       }
     }
