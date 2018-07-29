@@ -50,7 +50,12 @@ void setup() {
 
 
   Serial.begin(9600); // Starts the serial communication
-  vehicalCount = 5;
+  vehicalCount = 3;
+
+  Gate1servo.write(0);
+  Gate2servo.write(0);
+
+  pinMode(12, OUTPUT);
 }
 
 
@@ -59,14 +64,14 @@ void loop() {
   int timer1;
   int timer2;
 
-//  front_sen_one_distance = front_sen_one();
-//  delay(100);
-//  front_sen_two_distance = front_sen_two();
-//  delay(500);
-//   back_sen_one_distance  = back_sen_one();
-//   delay(500);
-//    back_sen_two_distance = back_sen_two();
-//    delay(500);
+  front_sen_one_distance = front_sen_one();
+  delay(500);
+  front_sen_two_distance = front_sen_two();
+  delay(500);
+   back_sen_one_distance  = back_sen_one();
+   delay(500);
+    back_sen_two_distance = back_sen_two();
+    delay(500);
 
   if (front_sen_one() <= 5 && front_sen_one() > 0) {
     if (vehicalCount > 0) {
@@ -84,10 +89,11 @@ void loop() {
       }
     }
     else {
-      // Disply unavailability mmmmmm
+      digitalWrite(12 , HIGH);
     }
   }
   else {
+    digitalWrite(12, LOW);
     delay(100);
     if (back_sen_one() <= 5 && back_sen_one() > 0) {
       openGate2();
@@ -190,7 +196,7 @@ int back_sen_two() {
 
 void openGate1() {
 
-  for (posGate1 = 0; posGate1 <= 90; posGate1 += 1) { // goes from 0 degrees to 180 degrees
+  for (posGate1 = 0; posGate1 <= 60; posGate1 += 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
     Gate1servo.write(posGate1);              // tell servo to go to position in variable 'pos'
     delay(30);                       // waits 15ms for the servo to reach the position
@@ -199,7 +205,7 @@ void openGate1() {
 
 void closeGate1() {
 
-  for (posGate1 = 90; posGate1 >= 1; posGate1 -= 1) { // goes from 180 degrees to 0 degrees
+  for (posGate1 = 60; posGate1 >= 1; posGate1 -= 1) { // goes from 180 degrees to 0 degrees
     Gate1servo.write(posGate1);              // tell servo to go to position in variable 'pos'
     delay(30);                       // waits 15ms for the servo to reach the position
   }
@@ -207,7 +213,7 @@ void closeGate1() {
 
 void openGate2() {
 
-  for (posGate2 = 0; posGate2 <= 90; posGate2 += 1) { // goes from 0 degrees to 180 degrees
+  for (posGate2 = 0; posGate2 <= 60; posGate2 += 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
     Gate2servo.write(posGate2);              // tell servo to go to position in variable 'pos'
     delay(30);                       // waits 15ms for the servo to reach the position
@@ -216,7 +222,7 @@ void openGate2() {
 
 void closeGate2() {
 
-  for (posGate2 = 90; posGate2 >= 1; posGate2 -= 1) { // goes from 180 degrees to 0 degrees
+  for (posGate2 = 60; posGate2 >= 1; posGate2 -= 1) { // goes from 180 degrees to 0 degrees
     Gate2servo.write(posGate2);              // tell servo to go to position in variable 'pos'
     delay(30);                       // waits 15ms for the servo to reach the position
   }
