@@ -1,21 +1,13 @@
 #include <Servo.h>
-
 Servo Gate1servo;
 Servo Gate2servo;
 
 // defines pins numbers
 const int front_sen_one_trigPin = 2;
 const int front_sen_one_echoPin = 3;
-
-//const int front_sen_two_trigPin = 4;
 const int front_sen_two_echoPin = 4;
-
-//const int back_sen_one_trigPin = 7;
 const int back_sen_one_echoPin = 5;
-
-//const int back_sen_two_trigPin = 8;
 const int back_sen_two_echoPin = 6;
-
 
 // defines variables
 long front_sen_one_duration;
@@ -41,10 +33,6 @@ int AccessDenide = 13;
 
 void setup() {
   pinMode(front_sen_one_trigPin, OUTPUT); // Sets the trigPin as an Output
-  //pinMode(front_sen_two_trigPin, OUTPUT);
-  //pinMode(back_sen_one_trigPin, OUTPUT);
-  //pinMode(back_sen_two_trigPin, OUTPUT);
-
   pinMode(front_sen_one_echoPin, INPUT); // Sets the echoPin as an Input
   pinMode(front_sen_two_echoPin, INPUT);
   pinMode(back_sen_one_echoPin, INPUT);
@@ -52,7 +40,6 @@ void setup() {
 
   Gate1servo.attach(9);
   Gate2servo.attach(10);
-
 
   Serial.begin(9600); // Starts the serial communication
   vehicalCount = 3;
@@ -63,25 +50,14 @@ void setup() {
   pinMode(carParkFull, OUTPUT);
   pinMode(AccessGranded,OUTPUT);
   pinMode(AccessDenide,OUTPUT);
-
   _isUserValid = "0";
 }
-
 
 void loop() {
   // Clears the trigPin
   int timer1;
   int timer2;
-
-  //  front_sen_one_distance = front_sen_one();
-  //  delay(500);
-  //  front_sen_two_distance = front_sen_two();
-  //  delay(500);
-  //   back_sen_one_distance  = back_sen_one();
-  //   delay(500);
-  //    back_sen_two_distance = back_sen_two();
-  //    delay(500);
-
+  
   if (front_sen_one() <= 5 && front_sen_one() > 1) {
     if (vehicalCount > 0) {
       while (isUserValid() == "0"){
@@ -129,10 +105,7 @@ void loop() {
         closeGate2();
       }
     }
-
   }
-
-
 }
 
 int front_sen_one() {
@@ -170,7 +143,6 @@ int front_sen_two() {
   // Prints the distance on the Serial Monitor
   Serial.print("Front Sensor Two Distance: ");
   Serial.println(distance);
-
   return distance;
 }
 
@@ -190,7 +162,6 @@ int back_sen_one() {
   // Prints the distance on the Serial Monitor
   Serial.print("Back Sensor One Distance: ");
   Serial.println(distance);
-
   return distance;
 }
 
@@ -210,7 +181,6 @@ int back_sen_two() {
   // Prints the distance on the Serial Monitor
   Serial.print("Back Sensor Two Distance: ");
   Serial.println(distance);
-
   return distance;
 }
 
@@ -257,5 +227,4 @@ return _isUserValid;
   } else {
     return "0";
   }
-
 }
